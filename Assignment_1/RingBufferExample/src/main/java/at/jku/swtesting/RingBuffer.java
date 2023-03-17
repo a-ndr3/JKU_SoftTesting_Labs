@@ -10,6 +10,8 @@ import java.util.NoSuchElementException;
  * 
  * Originally derived from http://www.cs.princeton.edu/introcs/43stack/RingBuffer.java.html
  */
+
+//testing: not synchronized, could be a problem if multiple threads access the same buffer
 public class RingBuffer<Item> implements Iterable<Item> {
 	
 	private Item[] a; 		// queue elements
@@ -23,12 +25,12 @@ public class RingBuffer<Item> implements Iterable<Item> {
 	 * @throws IllegalArgumentException if the initial capacity is less than one.
 	 */
 	@SuppressWarnings("unchecked")
-	public RingBuffer(int capacity) {
+	public RingBuffer(int capacity) { //testing: null ?
 		if (capacity < 1) {
 			throw new IllegalArgumentException("Initial capacity is less than one");
 		}
 		// cast needed since no generic array creation in Java
-		a = (Item[]) new Object[capacity];
+		a = (Item[]) new Object[capacity]; //testing: class cast exception
 	}	
 	
 	/** 
@@ -65,7 +67,7 @@ public class RingBuffer<Item> implements Iterable<Item> {
 	 * reached its capacity, appending overwrites the first element in the buffer.
 	 * @param item to be appended to the buffer.
 	 */
-	public void enqueue(Item item) {
+	public void enqueue(Item item) { //testing: null pointer exception
 		a[last] = item;
 		last = (last + 1) % a.length; // wrap-around
 		if (N < a.length) {
@@ -90,7 +92,7 @@ public class RingBuffer<Item> implements Iterable<Item> {
 		return item;
 	}
 	
-	/**
+	/*
 	 * Returns the first element from the buffer without removing it. 
 	 * @throws a RuntimeException if the buffer is empty.
 	 */	
