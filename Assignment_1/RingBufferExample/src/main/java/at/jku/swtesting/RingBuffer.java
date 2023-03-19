@@ -67,7 +67,7 @@ public class RingBuffer<Item> implements Iterable<Item> {
 	 * reached its capacity, appending overwrites the first element in the buffer.
 	 * @param item to be appended to the buffer.
 	 */
-	public void enqueue(Item item) { //testing: null pointer exception
+	public void enqueue(Item item) { //testing: no null check
 		a[last] = item;
 		last = (last + 1) % a.length; // wrap-around
 		if (N < a.length) {
