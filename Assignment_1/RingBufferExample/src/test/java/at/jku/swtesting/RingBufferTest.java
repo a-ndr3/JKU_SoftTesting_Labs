@@ -9,6 +9,32 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RingBufferTest {
+
+	// Test if IllegalArgumentException is thrown if capacity < 0.
+	@Test
+	public void testRingBufferConstructorWithZeroElement() throws IllegalArgumentException {
+		Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+			RingBuffer<String> buffer = new RingBuffer<>(0);
+		});
+		String expectedMessage = "Initial capacity is less than one";
+		String actualMessage = exception.getMessage();
+
+		assertEquals(actualMessage, expectedMessage);
+	}
+
+	// Test if RuntimeException is thrown in case of zero element and dequeue.
+	@Test
+	public void testRingBufferDequeueWithZeroElement() throws RuntimeException {
+		Exception exception = assertThrows(RuntimeException.class, () -> {
+			RingBuffer<String> buffer = new RingBuffer<>(1);
+			buffer.dequeue();
+		});
+		String expectedMessage = "Empty ring buffer.";
+		String actualMessage = exception.getMessage();
+
+		assertEquals(actualMessage, expectedMessage);
+	}
+
 	@Test
 	public void testRingBufferConstructorWithOneElement(){
 		//arrange
