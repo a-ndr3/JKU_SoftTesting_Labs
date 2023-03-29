@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="at.jku.swtesting.RingBufferTest" time="0.044" tests="19" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="19"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/amrelnaggar/Public/university/softwareTesting/JKU_SoftTesting_Labs/Assignment_1/RingBufferExample/target/test-classes:/Users/amrelnaggar/Public/university/softwareTesting/JKU_SoftTesting_Labs/Assignment_1/RingBufferExample/target/classes:/Users/amrelnaggar/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:/Users/amrelnaggar/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:/Users/amrelnaggar/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/amrelnaggar/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/Users/amrelnaggar/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/amrelnaggar/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/Users/amrelnaggar/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="19"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="EG"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/amrelnaggar/Public/university/softwareTesting/JKU_SoftTesting_Labs/Assignment_1/RingBufferExample/target/surefire/surefirebooter-20230329175311966_3.jar /Users/amrelnaggar/Public/university/softwareTesting/JKU_SoftTesting_Labs/Assignment_1/RingBufferExample/target/surefire 2023-03-29T17-53-11_847-jvmRun1 surefire-20230329175311966_1tmp surefire_0-20230329175311966_2tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/amrelnaggar/Public/university/softwareTesting/JKU_SoftTesting_Labs/Assignment_1/RingBufferExample/target/test-classes:/Users/amrelnaggar/Public/university/softwareTesting/JKU_SoftTesting_Labs/Assignment_1/RingBufferExample/target/classes:/Users/amrelnaggar/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:/Users/amrelnaggar/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:/Users/amrelnaggar/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/amrelnaggar/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/Users/amrelnaggar/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/amrelnaggar/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/Users/amrelnaggar/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/amrelnaggar"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2023-01-17"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/amrelnaggar/Public/university/softwareTesting/JKU_SoftTesting_Labs/Assignment_1/RingBufferExample"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Users/amrelnaggar/Public/university/softwareTesting/JKU_SoftTesting_Labs/Assignment_1/RingBufferExample/target/surefire/surefirebooter-20230329175311966_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="19.0.2+7-44"/>
+    <property name="user.name" value="amrelnaggar"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="13.2.1"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="/Users/amrelnaggar/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/var/folders/fv/z_l2w45n1498txv14_0mm24r0000gn/T/"/>
+    <property name="java.version" value="19.0.2"/>
+    <property name="user.dir" value="/Users/amrelnaggar/Public/university/softwareTesting/JKU_SoftTesting_Labs/Assignment_1/RingBufferExample"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/amrelnaggar/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="19.0.2+7-44"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.class.version" value="63.0"/>
+  </properties>
+  <testcase name="testRingBufferDequeueWithZeroElement" classname="at.jku.swtesting.RingBufferTest" time="0.011"/>
+  <testcase name="testHasNextWhenNotEmpty" classname="at.jku.swtesting.RingBufferTest" time="0.003"/>
+  <testcase name="testUsageOfEnqueueWithIntAndNull" classname="at.jku.swtesting.RingBufferTest" time="0.001"/>
+  <testcase name="testRingBufferWorkWithDifferentDataTypes" classname="at.jku.swtesting.RingBufferTest" time="0"/>
+  <testcase name="testNextWhenNotEmpty" classname="at.jku.swtesting.RingBufferTest" time="0"/>
+  <testcase name="testNextWhenEmpty" classname="at.jku.swtesting.RingBufferTest" time="0.001"/>
+  <testcase name="testRingBufferConstructorWithZeroElement" classname="at.jku.swtesting.RingBufferTest" time="0.001"/>
+  <testcase name="testPeek" classname="at.jku.swtesting.RingBufferTest" time="0"/>
+  <testcase name="testSize" classname="at.jku.swtesting.RingBufferTest" time="0"/>
+  <testcase name="testEnqueueWhenFullCapacity" classname="at.jku.swtesting.RingBufferTest" time="0.001"/>
+  <testcase name="testIteratorWithConcurrency" classname="at.jku.swtesting.RingBufferTest" time="0.007"/>
+  <testcase name="testCapacity" classname="at.jku.swtesting.RingBufferTest" time="0.001"/>
+  <testcase name="testEnqueueWithConcurrency" classname="at.jku.swtesting.RingBufferTest" time="0.002"/>
+  <testcase name="testHasNextWhenEmpty" classname="at.jku.swtesting.RingBufferTest" time="0.001"/>
+  <testcase name="testIsFull" classname="at.jku.swtesting.RingBufferTest" time="0.001"/>
+  <testcase name="testIsEmpty" classname="at.jku.swtesting.RingBufferTest" time="0"/>
+  <testcase name="testIterator" classname="at.jku.swtesting.RingBufferTest" time="0.001"/>
+  <testcase name="testRingBufferConstructorWithOneElement" classname="at.jku.swtesting.RingBufferTest" time="0"/>
+  <testcase name="testRingBufferPeekWithZeroElement" classname="at.jku.swtesting.RingBufferTest" time="0.001"/>
+</testsuite>

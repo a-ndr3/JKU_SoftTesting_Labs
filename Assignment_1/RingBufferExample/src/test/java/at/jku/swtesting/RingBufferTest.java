@@ -1,10 +1,11 @@
 package at.jku.swtesting;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-
+import java.util.NoSuchElementException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -35,6 +36,18 @@ public class RingBufferTest {
 		assertEquals(actualMessage, expectedMessage);
 	}
 
+	// Test if RuntimeException is thrown in case of zero element and peek.
+	@Test
+	public void testRingBufferPeekWithZeroElement() throws RuntimeException {
+		Exception exception = assertThrows(RuntimeException.class, () -> {
+			RingBuffer<String> buffer = new RingBuffer<>(1);
+			buffer.peek();
+		});
+		String expectedMessage = "Empty ring buffer.";
+		String actualMessage = exception.getMessage();
+
+		assertEquals(actualMessage, expectedMessage);
+	}
 	@Test
 	public void testRingBufferConstructorWithOneElement(){
 		//arrange
@@ -68,7 +81,7 @@ public class RingBufferTest {
 	@Test
 	public void testRingBufferWorkWithDifferentDataTypes(){
 
-		RingBuffer<String> buffer = new RingBuffer<String>(3);
+		RingBuffer<String> buffer = new RingBuffer<>(3);
 
 		buffer.enqueue("Hello");
 		buffer.enqueue("World");
@@ -106,5 +119,153 @@ public class RingBufferTest {
 		executor.awaitTermination(1, TimeUnit.MINUTES);
 
 		assertEquals(threads * elements, buffer.size()); //usually it will fail with amount of el < threads*elements
+	}
+
+	@Test
+	public void testSize() {
+		RingBuffer<String> buffer = new RingBuffer<>(3);
+
+		buffer.enqueue("Hello");
+		buffer.enqueue("World");
+
+		assertEquals(2, buffer.size());
+	}
+	@Test
+	public void testPeek() {
+		RingBuffer<String> buffer = new RingBuffer<>(3);
+
+		buffer.enqueue("Hello");
+		buffer.enqueue("World");
+
+		assertEquals("Hello", buffer.peek());
+	}
+
+	@Test
+	public void testIsEmpty() {
+		RingBuffer<String> buffer = new RingBuffer<>(3);
+
+		assertTrue(buffer.isEmpty());
+		buffer.enqueue("Hello");
+		buffer.enqueue("World");
+
+		assertFalse(buffer.isEmpty());
+	}
+
+	@Test
+	public void testIsFull() {
+		RingBuffer<String> buffer = new RingBuffer<>(3);
+
+		assertFalse(buffer.isFull());
+		buffer.enqueue("Hello");
+		buffer.enqueue("World");
+		buffer.enqueue("!");
+
+		assertTrue(buffer.isFull());
+	}
+
+	@Test
+	public void testCapacity() {
+		RingBuffer<String> buffer = new RingBuffer<>(3);
+
+		assertEquals(3, buffer.capacity());
+	}
+
+	@Test
+	public void testEnqueueWhenFullCapacity() {
+		RingBuffer<String> buffer = new RingBuffer<>(3);
+
+		buffer.enqueue("Hello");
+		buffer.enqueue("World");
+		buffer.enqueue("!");
+		// Since the buffer is full, the oldest element will be removed and the new element will be added.
+		buffer.enqueue("Goodbye");
+
+		assertEquals("World", buffer.peek());
+	}
+
+	@Test
+	public void testIterator() {
+		RingBuffer<String> buffer = new RingBuffer<>(3);
+
+		buffer.enqueue("Hello");
+		buffer.enqueue("World");
+		buffer.enqueue("!");
+
+		Iterator<String> it = buffer.iterator();
+		assertEquals("Hello", it.next());
+		assertEquals("World", it.next());
+		assertEquals("!", it.next());
+		assertFalse(it.hasNext());
+	}
+
+	@Test
+	public void testIteratorWithConcurrency() throws InterruptedException {
+
+		final int threads = 10;
+		final int elements = 1000;
+
+		RingBuffer<Integer> buffer = new RingBuffer<>(threads * elements);
+
+		var executor = Executors.newFixedThreadPool(threads);
+
+		for (int i = 0; i < threads; i++) {
+			executor.execute(() -> {
+				for (int j = 0; j < elements; j++) {
+					buffer.enqueue(j);
+				}
+			});
+		}
+
+		executor.shutdown();
+		executor.awaitTermination(1, TimeUnit.MINUTES);
+
+		int count = 0;
+		for (Integer i : buffer) {
+			count++;
+		}
+
+		assertEquals(threads * elements, count);
+	}
+
+	@Test
+	public void testHasNextWhenEmpty() {
+		RingBuffer<String> buffer = new RingBuffer<>(3);
+
+		Iterator<String> it = buffer.iterator();
+		assertFalse(it.hasNext());
+	}
+
+	@Test
+	public void testHasNextWhenNotEmpty() {
+		RingBuffer<String> buffer = new RingBuffer<>(3);
+
+		buffer.enqueue("Hello");
+		buffer.enqueue("World");
+		buffer.enqueue("!");
+
+		Iterator<String> it = buffer.iterator();
+		assertTrue(it.hasNext());
+	}
+
+	@Test
+	public void testNextWhenEmpty() {
+		RingBuffer<String> buffer = new RingBuffer<>(3);
+
+		Iterator<String> it = buffer.iterator();
+		assertThrows(NoSuchElementException.class, it::next);
+	}
+
+	@Test
+	public void testNextWhenNotEmpty() {
+		RingBuffer<String> buffer = new RingBuffer<>(3);
+
+		buffer.enqueue("Hello");
+		buffer.enqueue("World");
+		buffer.enqueue("!");
+
+		Iterator<String> it = buffer.iterator();
+		assertEquals("Hello", it.next());
+		assertEquals("World", it.next());
+		assertEquals("!", it.next());
 	}
 }
