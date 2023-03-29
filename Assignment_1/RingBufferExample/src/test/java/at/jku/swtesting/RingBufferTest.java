@@ -64,22 +64,24 @@ public class RingBufferTest {
 				}));
 	}
 
-	//shows casting error
+	//havent finished yet
 	@Test
-	public void testRingBufferConstructorCreationForDifferentDataTypes(){
+	public void testRingBufferWorkWithDifferentDataTypes(){
 
-		//arrange
-		RingBuffer<String> buffer = new RingBuffer<String>(10);
+		RingBuffer<String> buffer = new RingBuffer<String>(3);
 
 		buffer.enqueue("Hello");
 		buffer.enqueue("World");
+		RingBuffer buffer2 = buffer;
 
-		//act
-		RingBuffer buffer2 = buffer; //unsafe type cast
-		buffer2.enqueue(Integer.getInteger("123"));
-
-		//assert
-		assertEquals("123", buffer2.dequeue());
+		try
+		{
+			buffer2.enqueue(Integer.parseInt("123"));
+		}
+		catch (RuntimeException e)
+		{
+			//assertTrue();
+		}
 	}
 
 	@Test

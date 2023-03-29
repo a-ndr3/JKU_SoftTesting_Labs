@@ -25,14 +25,14 @@ public class RingBuffer<Item> implements Iterable<Item> {
 	 * @throws IllegalArgumentException if the initial capacity is less than one.
 	 */
 	@SuppressWarnings("unchecked")
-	public RingBuffer(int capacity) { //testing: null ?
+	public RingBuffer(int capacity) {
 		if (capacity < 1) {
 			throw new IllegalArgumentException("Initial capacity is less than one");
 		}
 		// cast needed since no generic array creation in Java
-		a = (Item[]) new Object[capacity]; //testing: class cast exception
-	}	
-	
+		a = (Item[]) new Object[capacity];   // private Object[] a; a = new Object[capacity];
+	}
+
 	/** 
 	 * Returns the number of elements the buffer can hold.
 	 */
@@ -67,7 +67,7 @@ public class RingBuffer<Item> implements Iterable<Item> {
 	 * reached its capacity, appending overwrites the first element in the buffer.
 	 * @param item to be appended to the buffer.
 	 */
-	public synchronized void enqueue(Item item) { //testing: no null check
+	public synchronized void enqueue(Item item) {
 		a[last] = item;
 		last = (last + 1) % a.length; // wrap-around
 		if (N < a.length) {
