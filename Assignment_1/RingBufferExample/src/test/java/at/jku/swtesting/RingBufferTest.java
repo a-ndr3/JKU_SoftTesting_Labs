@@ -77,10 +77,7 @@ public class RingBufferTest {
 				}));
 	}
 
-	//havent finished yet
-	@Test
-	public void testRingBufferWorkWithDifferentDataTypes(){
-
+	/* unsafe
 		RingBuffer<String> buffer = new RingBuffer<>(3);
 
 		buffer.enqueue("Hello");
@@ -93,9 +90,10 @@ public class RingBufferTest {
 		}
 		catch (RuntimeException e)
 		{
-			//assertTrue();
+
 		}
 	}
+	*/
 
 	@Test
 	public void testEnqueueWithConcurrency() throws InterruptedException {

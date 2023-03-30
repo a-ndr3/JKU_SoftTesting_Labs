@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/JKU_SoftTesting_Labs.iml" filepath="$PROJECT_DIR$/.idea/JKU_SoftTesting_Labs.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Assignment_1/RingBufferExample/assignment01.iml" filepath="$PROJECT_DIR$/Assignment_1/RingBufferExample/assignment01.iml" />
     </modules>
   </component>
 </project>
