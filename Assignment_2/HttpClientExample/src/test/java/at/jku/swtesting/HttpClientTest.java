@@ -1,7 +1,6 @@
 package at.jku.swtesting;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 import java.io.ByteArrayInputStream;
@@ -10,13 +9,49 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.invocation.InvocationOnMock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.stubbing.Answer;
 
+class WebPage{
+	private URL url;
+	private String title;
+	private String content;
+	private ArrayList<URL> links;
+
+	public WebPage(URL url, String title, String content, ArrayList<URL> links) {
+		this.url = url;
+		this.title = title;
+		this.content = content;
+		this.links = links;
+	}
+
+	public URL getUrl() {
+		return url;
+	}
+	public String getTitle() {
+		return title;
+	}
+
+	public String getContent() {
+		return content;
+	}
+	public ArrayList<URL> getLinks() {
+		return links;
+	}
+	public void addLink(URL url) {
+		links.add(url);
+	}
+}
 @ExtendWith(MockitoExtension.class)
 public class HttpClientTest {
 
@@ -61,4 +96,27 @@ public class HttpClientTest {
 		assertEquals(expectedContent, content);
 	}
 
+	/*
+	 * fails because no check for content type in getContent
+	 */
+	@Test
+	public void testGetContentWithDifferentCharSets() throws IOException{
+
+		String expectedContent = "ъ Ё é Ж ö ь й !";
+		URL mockURL = Mockito.mock(URL.class);
+		HttpClient httpClient = new HttpClient();
+
+		HttpURLConnection mockedConnection = Mockito.mock(HttpURLConnection.class);
+		when(mockURL.openConnection()).thenReturn(mockedConnection);
+
+		InputStream mockedInputStream = new ByteArrayInputStream(
+				expectedContent.getBytes());
+		when(mockedConnection.getInputStream()).thenReturn(mockedInputStream);
+
+		when(mockedConnection.getContentType()).thenReturn("text/html; charset=UTF-8");
+
+		String content = httpClient.getContent(mockURL);
+
+		assertEquals(expectedContent, content);
+	}
 }
