@@ -283,3 +283,16 @@ class RingBufferCoverageTest {
 	}
 
 }
+
+class RingBufferMutationTest{
+	@Test
+
+	public void testRingBufferDequeueMethod(){
+		RingBuffer<String> buffer = new RingBuffer<>(1);
+		buffer.enqueue("Hello");
+
+		buffer.dequeue();
+
+		assertEquals(0, buffer.size());
+	}
+}
