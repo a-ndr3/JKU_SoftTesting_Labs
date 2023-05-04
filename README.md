@@ -14,3 +14,7 @@ Mocking
 
 White box/coverage analysis
 Tests reports: [TestsReports.zip](https://github.com/a-ndr3/JKU_SoftTesting_Labs/files/11129087/TestsReports.zip)
+
+## Assignment 4
+
+State Transition Diagram: https://github.com/a-ndr3/JKU_SoftTesting_Labs/blob/main/StateTransition.png
