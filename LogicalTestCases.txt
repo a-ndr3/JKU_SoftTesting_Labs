@@ -1,0 +1,11 @@
+# Sequence
+1: init(2)-empty
+2: init(-2)-exception
+3: init(3)-empty-enqueue(2)-filled
+4: init(3)-empty-enqueue(2)-filled-dequeue()-empty
+5: init(4)-empty-enqueue(2)-filled-enqueue(3)-filled-dequeue()-filled
+6: init(1)-empty-enqueue(1)-full
+7: init(4)-empty-enqueue(2)-filled-enqueue(3)-filled-dequeue()-filled
+8: init(4)-empty-peek()-exception
+9: init(2)-empty-enqueue(1)-filled-enqueue(2)-full-enqueue(1)-full
+10: init(1)-empty-enqueue(1)-full-dequeue()-empty-dequeue()-exception
