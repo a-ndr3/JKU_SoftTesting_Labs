@@ -267,3 +267,32 @@ public class RingBufferTest {
 		assertEquals("!", it.next());
 	}
 }
+
+class RingBufferCoverageTest {
+
+	@Test
+	public void testIteratorRemoveMethod(){
+
+		assertThrows(UnsupportedOperationException.class, () -> {
+			RingBuffer<String> buffer = new RingBuffer<>(1);
+			buffer.enqueue("Hello");
+
+			Iterator<String> it = buffer.iterator();
+			it.remove();
+		});
+	}
+
+}
+
+class RingBufferMutationTest{
+	@Test
+
+	public void testRingBufferDequeueMethod(){
+		RingBuffer<String> buffer = new RingBuffer<>(1);
+		buffer.enqueue("Hello");
+
+		buffer.dequeue();
+
+		assertEquals(0, buffer.size());
+	}
+}
