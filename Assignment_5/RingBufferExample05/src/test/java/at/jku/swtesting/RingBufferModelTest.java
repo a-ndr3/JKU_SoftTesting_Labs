@@ -21,7 +21,7 @@ public class RingBufferModelTest {
         tester.addCoverageMetric(new StateCoverage());
         tester.addCoverageMetric(new TransitionCoverage());
 
-        tester.generate(50);
+        tester.generate(60);
 
         tester.printCoverage();
     }
