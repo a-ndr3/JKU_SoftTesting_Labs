@@ -60,7 +60,7 @@ public class LisssTest
         }
     }
     @Test
-    public void testLisss2() throws TimeoutException
+    public void testLisss2()
     {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         var resultElementAwaiter = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[contains(text(), '4,282')]")));

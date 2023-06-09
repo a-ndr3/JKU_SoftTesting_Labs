@@ -42,7 +42,7 @@ public class GoogleSearchPageObjectTest {
 		SearchPage searchPage = new SearchPage(driver);
 		searchPage.confirmTerms();
 
-			ResultsPage resultsPage = searchPage.searchFor("testing");
+		ResultsPage resultsPage = searchPage.searchFor("testing");
 				
 		assertEquals("testing - Google Suche", resultsPage.getTitle());
 	}
