@@ -20,3 +20,7 @@ Tests reports: [TestsReports.zip](https://github.com/a-ndr3/JKU_SoftTesting_Labs
 State Transition Diagram: https://github.com/a-ndr3/JKU_SoftTesting_Labs/blob/main/Assignment_4/StateTransition.png
 
 ## Assignment 5
+Automatization
+
+## Assignment 6
+Web testing
